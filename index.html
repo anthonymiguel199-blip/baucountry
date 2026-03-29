@@ -4,34 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Baú Country | Tradição e Estilo no Campo</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700;900&display=swap" rel="stylesheet">
   
   <style>
-    /* 3. CORES E TEXTURAS TEMA COUNTRY */
-    /* Fundo Principal: Uma cor de madeira escura (#1a0f00 / stone-950) */
     html, body {
       width: 100%;
       overflow-x: hidden;
       margin: 0;
       padding: 0;
-      /* Opcional: Descomente para usar uma imagem de textura sutil */
-      /* background-image: url('/fundo_textura.jpg'); background-repeat: repeat; */
-      background-color: #1a0f00; 
-      color: #f5f5f4; /* stone-100 */
-      font-family: 'Roboto Slab', serif; /* Aplicando a nova fonte */
+      
+      /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
+      background-image: url('fundo_textura.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Efeito de fundo fixo */
+      background-repeat: no-repeat;
+      background-color: #1a0f00; /* Cor de segurança caso a imagem não carregue */
+      
+      color: #f5f5f4; 
+      font-family: 'Roboto Slab', serif;
       scroll-behavior: smooth;
     }
+
     .logo-anim {
       transition: all 0.2s ease-out;
       will-change: transform, opacity;
     }
+
     #track::-webkit-scrollbar { display: none; }
     
     /* Indicador do Carrossel (Âmbar/Ouro) */
     .dot { transition: all 0.3s ease; }
-    .dot.active { background-color: #f59e0b; width: 1.5rem; } /* amber-500 */
+    .dot.active { background-color: #f59e0b; width: 1.5rem; } 
     
     /* Estilo das Setas do Carrossel */
     .nav-btn {
@@ -41,26 +48,32 @@
     #carousel-area:hover .nav-btn {
       opacity: 1;
     }
+
+    /* Ajuste para o efeito backdrop funcionar melhor com fundo escuro */
+    .backdrop-blur-sm {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
   </style>
 </head>
-<body class="bg-[#1a0f00] text-stone-100">
+<body>
   <div class="min-h-screen overflow-x-hidden relative">
     
-    <div class="fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.1),_transparent_28%)] pointer-events-none"></div>
+    <div class="fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.12),_transparent_30%)] pointer-events-none"></div>
     
-    <div class="fixed left-3 top-3 h-[96%] w-[calc(100%-24px)] rounded-[36px] border border-amber-900/40 pointer-events-none"></div>
+    <div class="fixed left-3 top-3 h-[96%] w-[calc(100%-24px)] rounded-[36px] border border-amber-900/30 pointer-events-none z-50"></div>
 
     <div class="relative mx-auto flex min-h-screen w-full max-w-md flex-col items-center justify-start p-4 pt-12">
       
-      <div class="w-full rounded-[36px] border border-amber-900/40 bg-stone-950/90 px-6 py-8 shadow-[0_0_60px_rgba(120,53,15,0.25)] backdrop-blur-sm">
+      <div class="w-full rounded-[36px] border border-amber-900/40 bg-stone-950/90 px-6 py-8 shadow-[0_0_60px_rgba(120,53,15,0.3)] backdrop-blur-sm">
         
         <div class="text-center">
           <div class="mb-0 flex justify-center overflow-visible sticky top-0 z-50">
             <img id="logo" src="icons/bau_country_logo.png" alt="Baú Country" class="w-[450px] logo-anim object-contain" 
-                 style="filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));">
+                 style="filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.4));">
           </div>
 
-          <h1 class="-mt-8 bg-gradient-to-b from-stone-100 via-amber-200 to-amber-600 bg-clip-text text-[18px] font-black md:font-bold tracking-tight text-transparent uppercase">
+          <h1 class="-mt-10 bg-gradient-to-b from-stone-100 via-amber-200 to-amber-600 bg-clip-text text-2xl font-black tracking-tight text-transparent uppercase">
             O melhor da moda country
           </h1>
           
@@ -79,14 +92,14 @@
             <img src="icons/instagram.png" class="absolute left-3 h-7 w-7 object-contain" alt="">
             <span>VER NOVIDADES NO INSTAGRAM</span>
           </a>
+
           <a href="https://www.facebook.com/baucountry?locale=pt_BR" class="relative group flex items-center justify-center rounded-xl border border-stone-600/50 bg-stone-900/85 px-5 py-4 text-[12px] font-semibold text-amber-50 active:scale-95 transition-all">
             <img src="icons/facebook.png" class="absolute left-3 h-7 w-7 object-contain" alt="">
-            <span>VEJA NOSSA PÁGINA</span>
+            <span>VEJA NOSSA PÁGINA NO FACEBOOK</span>
           </a>
         </div>
 
         <div id="produtos" class="mt-10 border-t border-amber-900/20 pt-6">
-          
           <div class="text-center mb-6">
             <h2 class="text-xl font-black tracking-tight text-amber-200 uppercase">Nossas Categorias</h2>
             <div class="mx-auto mt-2 h-[1px] w-20 bg-amber-400/50"></div>
@@ -104,112 +117,34 @@
             <div id="track" class="flex transition-transform duration-700 ease-out" style="transform: translateX(0%)">
               
               <div class="relative min-w-full overflow-hidden rounded-[22px]">
-                <img src="/bota.jpg" class="h-64 w-full object-cover" alt="Botas Baú Country" />
+                <img src="bota.jpg" class="h-64 w-full object-cover" alt="Botas Baú Country" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <h3 class="text-lg font-black md:font-bold text-stone-100 uppercase tracking-tighter">Botas de Couro</h3>
-                  <p class="text-[11px] text-amber-300 font-medium leading-tight">Durabilidade e conforto para o campo ou cidade.</p>
+                  <h3 class="text-lg font-black text-stone-100 uppercase tracking-tighter">Botas de Couro</h3>
+                  <p class="text-[11px] text-amber-300 font-medium">Durabilidade e conforto para o campo ou cidade.</p>
                 </div>
               </div>
               
               <div class="relative min-w-full overflow-hidden rounded-[22px]">
-                <img src="/chapeu.jpg" class="h-64 w-full object-cover" alt="Chapéus Baú Country" />
+                <img src="chapeu.jpg" class="h-64 w-full object-cover" alt="Chapéus Baú Country" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <h3 class="text-lg font-black md:font-bold text-stone-100 uppercase tracking-tighter">Chapéus</h3>
-                  <p class="text-[11px] text-amber-300 font-medium leading-tight">Modelos variados para complementar seu estilo country.</p>
+                  <h3 class="text-lg font-black text-stone-100 uppercase tracking-tighter">Chapéus</h3>
+                  <p class="text-[11px] text-amber-300 font-medium">Modelos variados para o seu estilo.</p>
                 </div>
               </div>
               
               <div class="relative min-w-full overflow-hidden rounded-[22px]">
-                <img src="/cinto.jpg" class="h-64 w-full object-cover" alt="Cintos Baú Country" />
+                <img src="cinto.jpg" class="h-64 w-full object-cover" alt="Cintos Baú Country" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <h3 class="text-lg font-black md:font-bold text-stone-100 uppercase tracking-tighter">Cintos e Fivelas</h3>
-                  <p class="text-[11px] text-amber-300 font-medium leading-tight">Detalhes únicos que fazem a diferença no seu visual.</p>
+                  <h3 class="text-lg font-black text-stone-100 uppercase tracking-tighter">Cintos e Fivelas</h3>
+                  <p class="text-[11px] text-amber-300 font-medium">Detalhes que fazem a diferença.</p>
                 </div>
               </div>
               
               <div class="relative min-w-full overflow-hidden rounded-[22px]">
-                <img src="/camisa.jpg" class="h-64 w-full object-cover" alt="Moda Baú Country" />
+                <img src="camisa.jpg" class="h-64 w-full object-cover" alt="Moda Baú Country" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <h3 class="text-lg font-black md:font-bold text-stone-100 uppercase tracking-tighter">Moda Masculina/Feminina</h3>
-                  <p class="text-[11px] text-amber-300 font-medium leading-tight">Camisas, calças e jaquetas premium.</p>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-          <div class="mt-4 flex justify-center gap-2">
-            <div class="dot active h-2 w-2 rounded-full bg-stone-700"></div>
-            <div class="dot h-2 w-2 rounded-full bg-stone-700"></div>
-            <div class="dot h-2 w-2 rounded-full bg-stone-700"></div>
-            <div class="dot h-2 w-2 rounded-full bg-stone-700"></div>
-          </div>
-        </div>
-
-        <div id="nossa-historia" class="mt-12 border-t border-amber-900/20 pt-8">
-          <div class="text-center mb-6">
-            <h2 class="text-xl font-black tracking-tight text-amber-200 uppercase">Nossa História</h2>
-            <div class="mx-auto mt-2 h-[1px] w-20 bg-amber-400/50"></div>
-          </div>
-          
-          <div class="relative mb-6 overflow-hidden rounded-[22px] border border-amber-900/30">
-            <img src="/loja_equipe.webp" alt="Equipe Baú Country" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-          </div>
-          
-          <div class="space-y-4 text-center">
-            <p class="text-[13px] leading-relaxed text-stone-200">A <span class="text-amber-300 font-bold">Baú Country</span> nasceu da paixão pela vida no campo e da tradição sertaneja.</p>
-            <p class="text-[13px] leading-relaxed text-stone-200">Selecionamos cada peça para garantir que você tenha o melhor da moda rústica, aliando conforto, durabilidade e autenticidade. Nossa missão é vestir você com o orgulho de ser country.</p>
-            <p class="text-[13px] leading-relaxed text-amber-400 italic font-medium">"Qualidade e Tradição que atravessam gerações."</p>
-          </div>
-        </div>
-
-        <p class="mt-12 text-center text-[10px] tracking-widest text-stone-600 uppercase">© 2026 Baú Country. Tradição e Estilo.</p>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-    /* Lógica do Scroll (Mantenha igual, apenas mudando as variáveis de animação se necessário) */
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const logo = document.getElementById('logo');
-      const scale = Math.max(0.72, 1 - scrollY * 0.0012);
-      const translateY = Math.min(scrollY * 0.18, 30);
-      const opacity = Math.max(0.82, 1 - scrollY * 0.001);
-      logo.style.transform = `translateY(-${translateY}px) scale(${scale})`;
-      logo.style.opacity = opacity;
-    });
-
-    /* Lógica do Carrossel (TotalSlides agora são 4 categorias) */
-    const track = document.getElementById('track');
-    const carouselArea = document.getElementById('carousel-area');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
-    const totalSlides = 4; /* Mudado para 4 categorias */
-    let touchStartX = 0;
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-    }
-
-    function next() { index = (index + 1) % totalSlides; updateCarousel(); }
-    function prev() { index = (index === 0) ? totalSlides - 1 : index - 1; updateCarousel(); }
-
-    carouselArea.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-    carouselArea.addEventListener('touchend', e => {
-      const touchEndX = e.changedTouches[0].screenX;
-      if (touchStartX - touchEndX > 50) { next(); resetTimer(); }
-      if (touchEndX - touchStartX > 50) { prev(); resetTimer(); }
-    });
-
-    let timer = setInterval(next, 10000); /* Tempo do slide (10 segundos) */
-    function resetTimer() { clearInterval(timer); timer = setInterval(next, 10000); }
-  </script>
-</body>
-</html>
+                  <h3 class="text-lg
